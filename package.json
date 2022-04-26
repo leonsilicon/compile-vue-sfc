@@ -14,7 +14,7 @@
 		"url": "https://leonzalion.com"
 	},
 	"bin": {
-		"compile-vue-sfc": "./bin/cli.ts"
+		"compile-vue-sfc": "./bin/cli.js"
 	},
 	"type": "module",
 	"exports": "./src/index.ts",

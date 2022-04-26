@@ -52,6 +52,9 @@ export async function compileVueSFC(
 	};
 
 	const vueSFCFiles = await globby(options.files);
+	if (vueSFCFiles.length === 0) {
+		throw new Error('No files were provided.');
+	}
 
 	if (options.declarations) {
 		const declarations: string[] = [];
