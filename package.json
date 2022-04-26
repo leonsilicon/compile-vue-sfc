@@ -13,6 +13,9 @@
 		"email": "contact@leonzalion.com",
 		"url": "https://leonzalion.com"
 	},
+	"bin": {
+		"compile-vue-sfc": "./bin/cli.ts"
+	},
 	"type": "module",
 	"exports": "./src/index.ts",
 	"scripts": {
@@ -26,18 +29,18 @@
 		"tc": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@leonzalion/configs": "latest",
-		"@types/node": "latest",
+		"@leonzalion/configs": "^1.2.31",
+		"@types/node": "^17.0.27",
 		"@types/signal-exit": "^3.0.1",
-		"desm": "latest",
-		"eslint-define-config": "latest",
-		"execa": "latest",
+		"desm": "^1.2.0",
+		"eslint-define-config": "^1.4.0",
+		"execa": "^6.1.0",
 		"lion-fixture": "^1.1.1",
-		"lion-system": "latest",
+		"lion-system": "^1.3.20",
 		"tsconfig-type": "^1.22.0",
-		"typescript": "latest",
-		"vite": "^2.9.5",
-		"vitest": "latest",
+		"typescript": "^4.6.3",
+		"vite": "^2.9.6",
+		"vitest": "^0.10.0",
 		"vue": "^3.2.33"
 	},
 	"dependencies": {
@@ -46,16 +49,11 @@
 		"commander": "^9.2.0",
 		"find-up": "^6.3.0",
 		"globby": "^13.1.1",
-		"is-path-inside": "^4.0.0",
 		"mock-argv": "^2.0.8",
-		"package-name-regex": "^2.0.6",
-		"postcss": "^8.4.12",
 		"rollup": "^2.70.2",
-		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-styles": "^4.0.0",
 		"signal-exit": "^3.0.7",
 		"tmp-promise": "^3.0.3",
-		"tsc-files": "^1.1.3",
 		"vue-tsc": "^0.34.10"
 	}
 }
