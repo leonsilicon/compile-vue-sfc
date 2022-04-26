@@ -1,0 +1,24 @@
+{
+	"extends": "@leonzalion/configs/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "/var/folders/16/swl4q94n2wv3__mbtfz_bz4h0000gn/T/tmp-46757-A7g4GOc5n9ZS",
+		"allowJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": [
+				"./src/*"
+			]
+		},
+		"types": [
+			"vue/ref-macros"
+		],
+		"skipLibCheck": true,
+		"noEmitOnError": false,
+		"rootDir": "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations"
+	},
+	"include": [],
+	"files": [
+		"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue",
+		"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue"
+	]
+}

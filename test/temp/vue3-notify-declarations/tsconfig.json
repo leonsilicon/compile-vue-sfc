@@ -1,0 +1,13 @@
+{
+	"extends": "@leonzalion/configs/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"allowJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		},
+		"types": ["vue/ref-macros"]
+	},
+	"include": ["./src"]
+}
