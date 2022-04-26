@@ -20,6 +20,7 @@ describe('works with vue3-notify/', () => {
 
 		const { declarations, outputChunks } = await compileVueSFC({
 			declarations: true,
+			write: true,
 			files: [path.join(vue3NotifyTempDir, 'src/**/*.vue')],
 		});
 		expect(declarations).toMatchSnapshot();
@@ -34,6 +35,7 @@ describe('works with vue3-notify/', () => {
 
 		const payload = await compileVueSFC({
 			declarations: false,
+			write: true,
 			files: [path.join(vue3NotifyTempDir, '**/*.vue')],
 		});
 		expect((payload as any).declarations).toBe(undefined);

@@ -172,11 +172,14 @@ export async function compileVueSFC(
 
 			const result = await bundle.generate({ format: 'esm' });
 
-			const { fileName, code } = result.output[0];
+			const { code } = result.output[0];
 
 			if (options.write) {
 				await fs.promises.writeFile(
-					path.join(path.dirname(vueSFCFile), fileName),
+					path.join(
+						path.dirname(vueSFCFile),
+						`${path.basename(vueSFCFile)}.js`
+					),
 					code
 				);
 			}
