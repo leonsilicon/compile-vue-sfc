@@ -6,6 +6,7 @@ specifiers:
   '@types/node': latest
   '@types/signal-exit': ^3.0.1
   '@vitejs/plugin-vue': ^2.3.1
+  commander: ^9.2.0
   desm: latest
   eslint-define-config: latest
   execa: latest
@@ -33,6 +34,7 @@ specifiers:
 dependencies:
   '@babel/types': 7.17.0
   '@vitejs/plugin-vue': 2.3.1_vite@2.9.5+vue@3.2.33
+  commander: 9.2.0
   find-up: 6.3.0
   globby: 13.1.1
   is-path-inside: 4.0.0
@@ -1497,7 +1499,6 @@ packages:
   /commander/9.2.0:
     resolution: {integrity: sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==}
     engines: {node: ^12.20.0 || >=14}
-    dev: true
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}

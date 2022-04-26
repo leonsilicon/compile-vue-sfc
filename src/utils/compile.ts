@@ -28,7 +28,7 @@ type CompileVueSFCOptions = {
 			tsconfigPath?: string;
 	  }
 	| {
-			declarations: false;
+			declarations?: false;
 	  }
 );
 
@@ -40,6 +40,9 @@ export async function compileVueSFC(
 ): Promise<
 	Omit<CompileVueSFCPayload, 'declarations'> & { declarations: string[] }
 >;
+export async function compileVueSFC(
+	options: CompileVueSFCOptions
+): Promise<CompileVueSFCPayload>;
 export async function compileVueSFC(
 	options: CompileVueSFCOptions
 ): Promise<CompileVueSFCPayload> {
