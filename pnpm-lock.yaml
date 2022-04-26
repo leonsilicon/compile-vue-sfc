@@ -13,12 +13,13 @@ specifiers:
   find-up: ^6.3.0
   globby: ^13.1.1
   lion-fixture: ^1.1.1
-  lion-system: ^1.3.20
+  lion-system: ^1.3.21
   mock-argv: ^2.0.8
   rollup: ^2.70.2
   rollup-plugin-styles: ^4.0.0
   signal-exit: ^3.0.7
   tmp-promise: ^3.0.3
+  tsconfig: ^7.0.0
   tsconfig-type: ^1.22.0
   typescript: ^4.6.3
   vite: ^2.9.6
@@ -37,6 +38,7 @@ dependencies:
   rollup-plugin-styles: 4.0.0_rollup@2.70.2
   signal-exit: 3.0.7
   tmp-promise: 3.0.3
+  tsconfig: 7.0.0
   vue-tsc: 0.34.10_typescript@4.6.3
 
 devDependencies:
@@ -47,7 +49,7 @@ devDependencies:
   eslint-define-config: 1.4.0
   execa: 6.1.0
   lion-fixture: 1.1.1
-  lion-system: 1.3.20_typescript@4.6.3
+  lion-system: 1.3.21_typescript@4.6.3
   tsconfig-type: 1.22.0
   typescript: 4.6.3
   vite: 2.9.6
@@ -318,7 +320,7 @@ packages:
       is-ci: 3.0.1
       lint-staged: 12.4.0
       lion-git-hooks: 1.0.9
-      lion-system: 1.3.20_typescript@4.6.3
+      lion-system: 1.3.21_typescript@4.6.3
       lionp: 1.0.24_typescript@4.6.3
       log-symbols: 5.1.0
       markdownlint-cli: 0.31.1
@@ -723,6 +725,14 @@ packages:
   /@types/signal-exit/3.0.1:
     resolution: {integrity: sha512-OSitN9PP9E/c4tlt1Qdj3CAz5uHD9Da5rhUqlaKyQRCX1T7Zdpbk6YdeZbR2eiE2ce+NMBgVnMxGqpaPSNQDUQ==}
     dev: true
+
+  /@types/strip-bom/3.0.0:
+    resolution: {integrity: sha1-FKjsOVbC6B7bdSB5CuzyHCkK69I=}
+    dev: false
+
+  /@types/strip-json-comments/0.0.30:
+    resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
+    dev: false
 
   /@typescript-eslint/eslint-plugin/5.21.0_829e74f28e9c9eb05edda582d47d45b8:
     resolution: {integrity: sha512-fTU85q8v5ZLpoZEyn/u1S2qrFOhi33Edo2CZ0+q1gDaWWm0JuPh3bgOyU8lM0edIEYgKLDkPFiZX2MOupgjlyg==}
@@ -3751,8 +3761,8 @@ packages:
       pkg-dir: 6.0.1
     dev: true
 
-  /lion-system/1.3.20_typescript@4.6.3:
-    resolution: {integrity: sha512-GifjemRr+hngOWogyym77A4aHHQTvH7w3cKyzwliLk/WtV9p2OEibT7hTiLHOsaEww+NNnHQ5R344XT860kuKA==}
+  /lion-system/1.3.21_typescript@4.6.3:
+    resolution: {integrity: sha512-tdhq6hTgvSMsc7L3TAe2DS7cX6Isvisk1sLc4ALLMosdKNmvjwdTUAqOccB4AXI4+lfDe+aKv+Rrjxvbh6eofg==}
     dependencies:
       '@rollup/plugin-commonjs': 21.1.0_rollup@2.70.2
       '@rollup/plugin-json': 4.1.0_rollup@2.70.2
@@ -3765,7 +3775,7 @@ packages:
       rfdc: 1.3.0
       rollup: 2.70.2
       rollup-plugin-bundle-esm: 0.1.1
-      rollup-plugin-peer-deps-external: 2.2.4_rollup@2.70.2
+      rollup-plugin-deps-external: 0.2.1
       tslib: 2.4.0
     transitivePeerDependencies:
       - typescript
@@ -3791,7 +3801,7 @@ packages:
       is-interactive: 2.0.0
       is-scoped: 3.0.0
       issue-regex: 4.0.0
-      lion-system: 1.3.20_typescript@4.6.3
+      lion-system: 1.3.21_typescript@4.6.3
       listr2: 4.0.5_enquirer@2.3.6
       log-symbols: 5.1.0
       meow: 10.1.2
@@ -5259,12 +5269,11 @@ packages:
       type-fest: 2.12.2
     dev: true
 
-  /rollup-plugin-peer-deps-external/2.2.4_rollup@2.70.2:
-    resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
-    peerDependencies:
-      rollup: '*'
+  /rollup-plugin-deps-external/0.2.1:
+    resolution: {integrity: sha512-dFphOeqHbOD0zDUv375+a2lXKj2NkTG9jqXINHxXmQO/H8MuQoYYxr/EiZ0mP7hOofGPl9nMnk/8EHH5+/3fhA==}
     dependencies:
-      rollup: 2.70.2
+      read-pkg: 7.1.0
+      resolve: 1.22.0
     dev: true
 
   /rollup-plugin-styles/4.0.0_rollup@2.70.2:
@@ -5555,7 +5564,6 @@ packages:
   /strip-bom/3.0.0:
     resolution: {integrity: sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM=}
     engines: {node: '>=4'}
-    dev: true
 
   /strip-final-newline/2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
@@ -5584,7 +5592,6 @@ packages:
   /strip-json-comments/2.0.1:
     resolution: {integrity: sha1-PFMZQukIwml8DsNEhYwobHygpgo=}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /strip-json-comments/3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
@@ -5808,6 +5815,15 @@ packages:
   /tsconfig-type/1.22.0:
     resolution: {integrity: sha512-Vme8G+4GHM3IRScMDE/AUaJorBlmkAKXONNGXSYVlDhvRI5pxWpe/VeAaP2pCHL1jCUAwGYbXGwUPHZLTEEkcg==}
     dev: true
+
+  /tsconfig/7.0.0:
+    resolution: {integrity: sha512-vZXmzPrL+EmC4T/4rVlT2jNVMWCi/O4DIiSj3UHg1OE5kCKbk4mfrXc6dZksLgRM/TZlKnousKH9bbTazUWRRw==}
+    dependencies:
+      '@types/strip-bom': 3.0.0
+      '@types/strip-json-comments': 0.0.30
+      strip-bom: 3.0.0
+      strip-json-comments: 2.0.1
+    dev: false
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}

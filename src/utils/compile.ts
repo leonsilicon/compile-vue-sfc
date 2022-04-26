@@ -10,6 +10,7 @@ import { rollup } from 'rollup';
 import styles from 'rollup-plugin-styles';
 import onExit from 'signal-exit';
 import tmp from 'tmp-promise';
+import { readFile as readTsconfigFile } from 'tsconfig';
 import type { Tsconfig } from 'tsconfig-type';
 
 const randomChars = () => Math.random().toString(36).slice(2);
@@ -72,13 +73,7 @@ export async function compileVueSFC(
 
 		const projectPath = path.dirname(tsconfigPath);
 
-		const tsconfigContent = fs.readFileSync(tsconfigPath).toString();
-		// Use 'eval' to read the JSON as regular JavaScript syntax so that comments are allowed
-
-		// eslint-disable-next-line prefer-const
-		let tsconfig = {} as Tsconfig;
-		// eslint-disable-next-line no-eval
-		eval(`tsconfig = ${tsconfigContent}`);
+		const tsconfig = (await readTsconfigFile(tsconfigPath)) as Tsconfig;
 
 		// Write a temp config file
 		const tmpTsconfigPath = path.join(
