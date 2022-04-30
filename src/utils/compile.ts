@@ -78,9 +78,20 @@ export async function compileVueSFC(
 		const projectPath = options.projectRootPath ?? path.dirname(tsconfigPath);
 
 		const tmpDir = await tmp.dir();
-		const projectTmpDir = path.join(tmpDir.path, path.basename(projectPath));
+		const projectTmpDir = tmpDir.path;
 
-		await  fs.promises.symlink(projectPath, projectTmpDir);
+		// Symlink the files individually and not the entire project folder so that when we create the temporary tsconfig.json file, it doesn't pollute the original directory
+		const projectFiles = await fs.promises.readdir(projectPath);
+		await Promise.all(
+			projectFiles.map(async (projectFile) => {
+				const projectFilePath = path.join(projectPath, projectFile);
+				await fs.promises.symlink(
+					projectFilePath,
+					path.join(projectTmpDir, projectFile)
+				);
+			})
+		);
+
 
 		const declarations: string[] = [];
 
