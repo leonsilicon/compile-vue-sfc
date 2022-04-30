@@ -1,8 +1,9 @@
 import vue from '@vitejs/plugin-vue';
+import { execa } from 'execa';
 import { findUp } from 'find-up';
 import { globby } from 'globby';
-import mockArgv from 'mock-argv';
 import * as fs from 'node:fs';
+import { createRequire } from 'node:module';
 import * as path from 'node:path';
 import process from 'node:process';
 import type { OutputChunk } from 'rollup';
@@ -12,6 +13,8 @@ import onExit from 'signal-exit';
 import tmp from 'tmp-promise';
 import { readFile as readTsconfigFile } from 'tsconfig';
 import type { Tsconfig } from 'tsconfig-type';
+
+const __require = createRequire(import.meta.url);
 
 const randomChars = () => Math.random().toString(36).slice(2);
 
@@ -106,8 +109,6 @@ export async function compileVueSFC(
 
 		fs.writeFileSync(tmpTsconfigPath, JSON.stringify(tmpTsconfig, null, '\t'));
 
-		const originalProcessExit = process.exit;
-
 		// @ts-expect-error: We're temporarily overriding process.exit to prevent vue-tsc from exiting the program
 		process.exit = (code: number) => {
 			if (code !== 0) {
@@ -116,14 +117,14 @@ export async function compileVueSFC(
 			/* noop */
 		};
 
-		await mockArgv(
-			['--declaration', '--emitDeclarationOnly', '--project', tmpTsconfigPath],
-			async () => {
-				await import('vue-tsc/bin/vue-tsc.js');
-			}
-		);
+		const vueTscPath = __require.resolve('vue-tsc/bin/vue-tsc.js');
 
-		process.exit = originalProcessExit;
+		await execa(vueTscPath, [
+			'--declaration',
+			'--emitDeclarationOnly',
+			'--project',
+			tmpTsconfigPath,
+		]);
 
 		// Copying the declaration files to the original project
 		await Promise.all(
