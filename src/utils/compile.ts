@@ -119,12 +119,11 @@ export async function compileVueSFC(
 
 		const vueTscPath = __require.resolve('vue-tsc/bin/vue-tsc.js');
 
-		await execa(vueTscPath, [
-			'--declaration',
-			'--emitDeclarationOnly',
-			'--project',
-			tmpTsconfigPath,
-		]);
+		await execa(
+			vueTscPath,
+			['--declaration', '--emitDeclarationOnly', '--project', tmpTsconfigPath],
+			{ stdio: 'inherit' }
+		);
 
 		// Copying the declaration files to the original project
 		await Promise.all(
