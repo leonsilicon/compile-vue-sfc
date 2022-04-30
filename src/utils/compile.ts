@@ -9,7 +9,6 @@ import process from 'node:process';
 import type { OutputChunk } from 'rollup';
 import { rollup } from 'rollup';
 import styles from 'rollup-plugin-styles';
-import onExit from 'signal-exit';
 import tmp from 'tmp-promise';
 import { readFile as readTsconfigFile } from 'tsconfig';
 import type { Tsconfig } from 'tsconfig-type';
@@ -25,6 +24,7 @@ type CompileVueSFCPayload = {
 
 type CompileVueSFCOptions = {
 	files: string | string[];
+	projectRootPath?: string;
 	write?: boolean;
 } & (
 	| {
@@ -60,9 +60,7 @@ export async function compileVueSFC(
 	}
 
 	if (options.declarations) {
-		const declarations: string[] = [];
-
-		// Generate the TypeScript definitions
+		// To generate the declarations, we need to create a temporary tsconfig.json file to pass to vue-tsc. Unfortunately, TypeScript doesn't support specifying individual files yet, so we instead symlink all the project files into a temporary directory.
 		let tsconfigPath: string;
 		if (options.tsconfigPath === undefined) {
 			const projectTsconfigPath = await findUp('tsconfig.json', {
@@ -77,20 +75,21 @@ export async function compileVueSFC(
 			tsconfigPath = options.tsconfigPath;
 		}
 
-		const projectPath = path.dirname(tsconfigPath);
+		const projectPath = options.projectRootPath ?? path.dirname(tsconfigPath);
+
+		const tmpDir = await tmp.dir();
+		const projectTmpDir = path.join(tmpDir.path, path.basename(projectPath));
+
+		await  fs.promises.symlink(projectPath, projectTmpDir);
+
+		const declarations: string[] = [];
 
 		const tsconfig = (await readTsconfigFile(tsconfigPath)) as Tsconfig;
 
-		// Write a temp config file
 		const tmpTsconfigPath = path.join(
-			path.dirname(tsconfigPath),
+			projectTmpDir,
 			`tsconfig.${randomChars()}.json`
 		);
-
-		// Ensure that the temporary tsconfig is always deleted before the program exits
-		onExit(() => {
-			fs.rmSync(tmpTsconfigPath, { force: true });
-		});
 
 		const tmpOutDir = await tmp.dir();
 
@@ -102,6 +101,7 @@ export async function compileVueSFC(
 				noEmitOnError: false,
 				outDir: tmpOutDir.path,
 				rootDir: projectPath,
+				baseUrl: projectPath,
 			},
 			files: vueSFCFiles,
 			include: [],
