@@ -1,6 +1,6 @@
 {
 	"name": "compile-vue-sfc",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "A utility function to compile a Vue SFC file into JavaScript and TypeScript definitions.",
 	"license": "MIT",
 	"repository": {
