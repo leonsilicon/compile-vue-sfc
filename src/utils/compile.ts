@@ -92,7 +92,6 @@ export async function compileVueSFC(
 			})
 		);
 
-
 		const declarations: string[] = [];
 
 		const tsconfig = (await readTsconfigFile(tsconfigPath)) as Tsconfig;
@@ -111,8 +110,7 @@ export async function compileVueSFC(
 				skipLibCheck: true,
 				noEmitOnError: false,
 				outDir: tmpOutDir.path,
-				rootDir: projectPath,
-				baseUrl: projectPath,
+				rootDir: projectTmpDir,
 			},
 			files: vueSFCFiles,
 			include: [],
