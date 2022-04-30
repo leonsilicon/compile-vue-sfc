@@ -102,6 +102,9 @@ export async function compileVueSFC(
 		);
 
 		const tmpOutDir = await tmp.dir();
+		const vueSFCTempFiles = vueSFCFiles.map((vueSFCFile) =>
+			path.join(projectTmpDir, path.relative(projectPath, vueSFCFile))
+		);
 
 		const tmpTsconfig: Tsconfig = {
 			...tsconfig,
@@ -112,7 +115,7 @@ export async function compileVueSFC(
 				outDir: tmpOutDir.path,
 				rootDir: projectTmpDir,
 			},
-			files: vueSFCFiles,
+			files: vueSFCTempFiles,
 			include: [],
 		};
 

@@ -23,7 +23,7 @@
 		"preinstall": "pnpm build",
 		"prepare": "lion-git-hooks",
 		"build": "node-ts ./scripts/build.ts",
-		"start": "node-ts ./src/index.ts",
+		"start": "node-ts ./src/bin/cli.ts",
 		"test": "vitest run",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write .",
