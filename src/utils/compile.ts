@@ -5,7 +5,6 @@ import { globby } from 'globby';
 import * as fs from 'node:fs';
 import { createRequire } from 'node:module';
 import * as path from 'node:path';
-import process from 'node:process';
 import type { OutputChunk } from 'rollup';
 import { rollup } from 'rollup';
 import styles from 'rollup-plugin-styles';
@@ -75,22 +74,28 @@ export async function compileVueSFC(
 			tsconfigPath = options.tsconfigPath;
 		}
 
-		const projectPath = options.projectRootPath ?? path.dirname(tsconfigPath);
-
 		const tmpDir = await tmp.dir();
 		const projectTmpDir = tmpDir.path;
 
-		// Symlink the files individually and not the entire project folder so that when we create the temporary tsconfig.json file, it doesn't pollute the original directory
-		const projectFiles = await fs.promises.readdir(projectPath);
-		await Promise.all(
-			projectFiles.map(async (projectFile) => {
-				const projectFilePath = path.join(projectPath, projectFile);
-				await fs.promises.symlink(
-					projectFilePath,
-					path.join(projectTmpDir, projectFile)
-				);
-			})
+		// Using `path.resolve` for more robust equality checks in the below while loop
+		const projectRootPath = path.resolve(
+			options.projectRootPath ?? path.dirname(tsconfigPath)
 		);
+
+		// Recursively symlink all parent folders of the tsconfigPath until it reaches projectRootPath
+		let currentDirectory = tsconfigPath;
+
+		do {
+			currentDirectory = path.dirname(currentDirectory);
+			// Symlink the files individually and not the entire project folder so that when we create the temporary tsconfig.json file, it doesn't pollute the original directory
+			const projectFiles = fs.readdirSync(currentDirectory);
+			for (const projectFile of projectFiles) {
+				const projectFilePath = path.join(currentDirectory, projectFile);
+				fs.symlinkSync(projectFilePath, path.join(projectTmpDir, projectFile));
+			}
+		} while (currentDirectory !== projectRootPath);
+
+		const projectPath = options.projectRootPath ?? path.dirname(tsconfigPath);
 
 		const declarations: string[] = [];
 
@@ -120,14 +125,6 @@ export async function compileVueSFC(
 		};
 
 		fs.writeFileSync(tmpTsconfigPath, JSON.stringify(tmpTsconfig, null, '\t'));
-
-		// @ts-expect-error: We're temporarily overriding process.exit to prevent vue-tsc from exiting the program
-		process.exit = (code: number) => {
-			if (code !== 0) {
-				throw new Error(`vue-tsc returned a non-zero exit code: ${code}`);
-			}
-			/* noop */
-		};
 
 		const vueTscPath = __require.resolve('vue-tsc/bin/vue-tsc.js');
 
