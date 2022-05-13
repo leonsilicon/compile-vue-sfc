@@ -1,20 +1,13 @@
 import vue from '@vitejs/plugin-vue';
-import { execa } from 'execa';
 import { findUp } from 'find-up';
 import { globby } from 'globby';
 import * as fs from 'node:fs';
-import { createRequire } from 'node:module';
 import * as path from 'node:path';
 import type { OutputChunk } from 'rollup';
 import { rollup } from 'rollup';
 import styles from 'rollup-plugin-styles';
-import tmp from 'tmp-promise';
-import { readFile as readTsconfigFile } from 'tsconfig';
-import type { Tsconfig } from 'tsconfig-type';
 
-const __require = createRequire(import.meta.url);
-
-const randomChars = () => Math.random().toString(36).slice(2);
+import { executeVueTsc } from '~/utils/vue-tsc.js';
 
 type CompileVueSFCPayload = {
 	declarations?: string[];
@@ -59,7 +52,6 @@ export async function compileVueSFC(
 	}
 
 	if (options.declarations) {
-		// To generate the declarations, we need to create a temporary tsconfig.json file to pass to vue-tsc. Unfortunately, TypeScript doesn't support specifying individual files yet, so we instead symlink all the project files into a temporary directory.
 		let tsconfigPath: string;
 		if (options.tsconfigPath === undefined) {
 			const projectTsconfigPath = await findUp('tsconfig.json', {
@@ -74,89 +66,32 @@ export async function compileVueSFC(
 			tsconfigPath = options.tsconfigPath;
 		}
 
-		const tmpDir = await tmp.dir();
-		const projectTmpDir = tmpDir.path;
-
-		// Using `path.resolve` for more robust equality checks in the below while loop
-		const projectRootPath = path.resolve(
-			options.projectRootPath ?? path.dirname(tsconfigPath)
-		);
-
-		// Recursively symlink all parent folders of the tsconfigPath until it reaches projectRootPath
-		let currentDirectory = tsconfigPath;
-
-		do {
-			currentDirectory = path.dirname(currentDirectory);
-			// Symlink the files individually and not the entire project folder so that when we create the temporary tsconfig.json file, it doesn't pollute the original directory
-			const projectFiles = fs.readdirSync(currentDirectory);
-			for (const projectFile of projectFiles) {
-				const projectFilePath = path.join(currentDirectory, projectFile);
-				fs.symlinkSync(projectFilePath, path.join(projectTmpDir, projectFile));
-			}
-		} while (currentDirectory !== projectRootPath);
-
-		const projectPath = options.projectRootPath ?? path.dirname(tsconfigPath);
-
-		const declarations: string[] = [];
-
-		const tsconfig = (await readTsconfigFile(tsconfigPath)) as Tsconfig;
-
-		const tmpTsconfigPath = path.join(
-			projectTmpDir,
-			`tsconfig.${randomChars()}.json`
-		);
-
-		const tmpOutDir = await tmp.dir();
-		const vueSFCTempFiles = vueSFCFiles.map((vueSFCFile) =>
-			path.join(projectTmpDir, path.relative(projectPath, vueSFCFile))
-		);
-
-		const tmpTsconfig: Tsconfig = {
-			...tsconfig,
-			compilerOptions: {
-				...tsconfig.compilerOptions,
-				skipLibCheck: true,
-				noEmitOnError: false,
-				outDir: tmpOutDir.path,
-				rootDir: projectTmpDir,
-			},
-			files: vueSFCTempFiles,
-			include: [],
-		};
-
-		fs.writeFileSync(tmpTsconfigPath, JSON.stringify(tmpTsconfig, null, '\t'));
-
-		const vueTscPath = __require.resolve('vue-tsc/bin/vue-tsc.js');
-
-		await execa(
-			vueTscPath,
-			['--declaration', '--emitDeclarationOnly', '--project', tmpTsconfigPath],
-			{ stdio: 'inherit' }
-		);
+		const projectPath = path.dirname(tsconfigPath);
 
 		// Copying the declaration files to the original project
 		await Promise.all(
 			vueSFCFiles.map(async (vueSFCFilePath) => {
+				const vueSFCDeclaration = await executeVueTsc([
+					'--declaration',
+					'--emitDeclarationOnly',
+					'--project',
+					tsconfigPath,
+					// custom option for our wrapper
+					'--vue-sfc-file-path',
+					vueSFCFilePath,
+				]);
+
 				const relativePath = path.relative(
 					path.dirname(tsconfigPath),
 					vueSFCFilePath
 				);
-				const tmpVueSFCDtsFilePath = path.join(
-					tmpOutDir.path,
-					`${relativePath}.d.ts`
-				);
+
 				const vueSFCDtsPath = path.join(projectPath, `${relativePath}.d.ts`);
 				if (options.write) {
-					await fs.promises.cp(tmpVueSFCDtsFilePath, vueSFCDtsPath);
+					await fs.promises.writeFile(vueSFCDeclaration, vueSFCDtsPath);
 				}
-
-				declarations.push(
-					await fs.promises.readFile(tmpVueSFCDtsFilePath, 'utf8')
-				);
 			})
 		);
-
-		payload.declarations = declarations;
 	}
 
 	// Transform the .vue files into JavaScript with rollup
