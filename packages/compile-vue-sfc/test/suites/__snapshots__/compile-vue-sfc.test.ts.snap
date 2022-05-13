@@ -1,177 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`works with vue3-notify/ > works with declarations 1`] = `
-[
-  "/// <reference types=\\"node\\" />
-import type { NotificationsOptions } from '~/types/notification.js';
-declare const _default: import(\\"vue\\").DefineComponent<__VLS_TypePropsToRuntimeProps<{
-    group?: string | undefined;
-    width?: string | number | undefined;
-    reverse?: boolean | undefined;
-    position?: string | string[] | undefined;
-    classes?: string | undefined;
-    animationName?: string | undefined;
-    speed?: number | undefined;
-    cooldown?: number | undefined;
-    duration?: number | undefined;
-    delay?: number | undefined;
-    max?: number | undefined;
-    ignoreDuplicates?: boolean | undefined;
-    closeOnClick?: boolean | undefined;
-    pauseOnHover?: boolean | undefined;
-}>, {
-    addItem: (event?: NotificationsOptions) => void;
-    list: (Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    })[];
-}, unknown, {}, {}, import(\\"vue\\").ComponentOptionsMixin, import(\\"vue\\").ComponentOptionsMixin, {
-    click: (item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => void;
-} & {
-    destroy: (item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => void;
-}, string, import(\\"vue\\").VNodeProps & import(\\"vue\\").AllowedComponentProps & import(\\"vue\\").ComponentCustomProps, Readonly<import(\\"vue\\").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    group?: string | undefined;
-    width?: string | number | undefined;
-    reverse?: boolean | undefined;
-    position?: string | string[] | undefined;
-    classes?: string | undefined;
-    animationName?: string | undefined;
-    speed?: number | undefined;
-    cooldown?: number | undefined;
-    duration?: number | undefined;
-    delay?: number | undefined;
-    max?: number | undefined;
-    ignoreDuplicates?: boolean | undefined;
-    closeOnClick?: boolean | undefined;
-    pauseOnHover?: boolean | undefined;
-}>>> & {
-    onClick?: ((item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => any) | undefined;
-    onDestroy?: ((item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => any) | undefined;
-}, {}>;
-export default _default;
-declare type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-declare type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
-};
-",
-  "/// <reference types=\\"node\\" />
-import type { NotificationsOptions } from '~/types/notification.js';
-declare const _default: import(\\"vue\\").DefineComponent<__VLS_TypePropsToRuntimeProps<{
-    group?: string | undefined;
-    width?: string | number | undefined;
-    reverse?: boolean | undefined;
-    position?: string | string[] | undefined;
-    classes?: string | undefined;
-    animationName?: string | undefined;
-    speed?: number | undefined;
-    cooldown?: number | undefined;
-    duration?: number | undefined;
-    delay?: number | undefined;
-    max?: number | undefined;
-    ignoreDuplicates?: boolean | undefined;
-    closeOnClick?: boolean | undefined;
-    pauseOnHover?: boolean | undefined;
-}>, {
-    addItem: (event?: NotificationsOptions) => void;
-    list: (Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    })[];
-}, unknown, {}, {}, import(\\"vue\\").ComponentOptionsMixin, import(\\"vue\\").ComponentOptionsMixin, {
-    click: (item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => void;
-} & {
-    destroy: (item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => void;
-}, string, import(\\"vue\\").VNodeProps & import(\\"vue\\").AllowedComponentProps & import(\\"vue\\").ComponentCustomProps, Readonly<import(\\"vue\\").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    group?: string | undefined;
-    width?: string | number | undefined;
-    reverse?: boolean | undefined;
-    position?: string | string[] | undefined;
-    classes?: string | undefined;
-    animationName?: string | undefined;
-    speed?: number | undefined;
-    cooldown?: number | undefined;
-    duration?: number | undefined;
-    delay?: number | undefined;
-    max?: number | undefined;
-    ignoreDuplicates?: boolean | undefined;
-    closeOnClick?: boolean | undefined;
-    pauseOnHover?: boolean | undefined;
-}>>> & {
-    onClick?: ((item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => any) | undefined;
-    onDestroy?: ((item: Pick<NotificationsOptions, \\"id\\" | \\"title\\" | \\"text\\" | \\"type\\" | \\"speed\\" | \\"data\\"> & {
-        length: number;
-    } & {
-        timer?: NodeJS.Timeout | undefined;
-    } & {
-        state: 0 | 2;
-    }) => any) | undefined;
-}, {}>;
-export default _default;
-declare type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-declare type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
-};
-",
-]
-`;
+exports[`works with vue3-notify/ > works with declarations 1`] = `undefined`;
 
 exports[`works with vue3-notify/ > works with declarations 2`] = `
 [
@@ -402,7 +231,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue\\"]]);
+var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue\\"]]);
 
 export { vueNotifications2 as default };
 ",
@@ -410,7 +239,7 @@ export { vueNotifications2 as default };
     "exports": [
       "default",
     ],
-    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue",
+    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue",
     "fileName": "vue-notifications-2.js",
     "implicitlyLoadedBefore": [],
     "importedBindings": {
@@ -461,7 +290,7 @@ export { vueNotifications2 as default };
     "isImplicitEntry": false,
     "map": null,
     "modules": {
-      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.70.2/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
+      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.72.1/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
         "code": "var e=[],t=[];function n(n,r){if(n&&\\"undefined\\"!=typeof document){var a,s=!0===r.prepend?\\"prepend\\":\\"append\\",d=!0===r.singleTag,i=\\"string\\"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName(\\"head\\")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement(\\"style\\");if(e.setAttribute(\\"type\\",\\"text/css\\"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a=\\"prepend\\"===s?\\"afterbegin\\":\\"beforeend\\";return i.insertAdjacentElement(a,e),e}}",
         "originalLength": 764,
         "removedExports": [],
@@ -470,7 +299,7 @@ export { vueNotifications2 as default };
         ],
         "renderedLength": 744,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue": {
         "code": "const _hoisted_1 = [\\"data-id\\"];
 const _hoisted_2 = [\\"onClick\\"];
 const _hoisted_3 = [\\"innerHTML\\"];
@@ -677,15 +506,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue\\"]]);",
+var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue\\"]]);",
         "originalLength": 6897,
         "removedExports": [],
         "renderedExports": [
           "default",
         ],
-        "renderedLength": 7386,
+        "renderedLength": 7411,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue?vue&type=style&index=0&lang.css": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications-2.vue?vue&type=style&index=0&lang.css": {
         "code": "var css = \\"\\\\n.vue-notification-group {\\\\n\\\\tdisplay: block;\\\\n\\\\tposition: fixed;\\\\n\\\\tz-index: 5000;\\\\n}\\\\n.vue-notification-wrapper {\\\\n\\\\tdisplay: block;\\\\n\\\\toverflow: hidden;\\\\n\\\\twidth: 100%;\\\\n\\\\tmargin: 0;\\\\n\\\\tpadding: 0;\\\\n}\\\\n.notification-title {\\\\n\\\\tfont-weight: 600;\\\\n}\\\\n.vue-notification-template {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\tbackground: white;\\\\n\\\\ttext-align: left;\\\\n}\\\\n.vue-notification {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\ttext-align: left;\\\\n\\\\tfont-size: 12px;\\\\n\\\\tpadding: 10px;\\\\n\\\\tmargin: 0 5px 5px;\\\\n\\\\n\\\\tcolor: white;\\\\n\\\\tbackground: #44a4fc;\\\\n\\\\tborder-left: 5px solid #187fe7;\\\\n}\\\\n.vue-notification.warn {\\\\n\\\\tbackground: #ffb648;\\\\n\\\\tborder-left-color: #f48a06;\\\\n}\\\\n.vue-notification.error {\\\\n\\\\tbackground: #e54d42;\\\\n\\\\tborder-left-color: #b82e24;\\\\n}\\\\n.vue-notification.success {\\\\n\\\\tbackground: #68cd86;\\\\n\\\\tborder-left-color: #42a85f;\\\\n}\\\\n.vn-fade-enter-active,\\\\n.vn-fade-leave-active,\\\\n.vn-fade-move {\\\\n\\\\ttransition: all 0.5s;\\\\n}\\\\n.vn-fade-enter-from,\\\\n.vn-fade-leave-to {\\\\n\\\\topacity: 0;\\\\n}\\\\n\\";
 n(css,{});",
         "originalLength": 938,
@@ -944,7 +773,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue\\"]]);
+var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue\\"]]);
 
 export { vueNotifications as default };
 ",
@@ -952,7 +781,7 @@ export { vueNotifications as default };
     "exports": [
       "default",
     ],
-    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue",
+    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue",
     "fileName": "vue-notifications.js",
     "implicitlyLoadedBefore": [],
     "importedBindings": {
@@ -1003,7 +832,7 @@ export { vueNotifications as default };
     "isImplicitEntry": false,
     "map": null,
     "modules": {
-      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.70.2/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
+      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.72.1/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
         "code": "var e=[],t=[];function n(n,r){if(n&&\\"undefined\\"!=typeof document){var a,s=!0===r.prepend?\\"prepend\\":\\"append\\",d=!0===r.singleTag,i=\\"string\\"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName(\\"head\\")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement(\\"style\\");if(e.setAttribute(\\"type\\",\\"text/css\\"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a=\\"prepend\\"===s?\\"afterbegin\\":\\"beforeend\\";return i.insertAdjacentElement(a,e),e}}",
         "originalLength": 764,
         "removedExports": [],
@@ -1012,7 +841,7 @@ export { vueNotifications as default };
         ],
         "renderedLength": 744,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue": {
         "code": "const _hoisted_1 = [\\"data-id\\"];
 const _hoisted_2 = [\\"onClick\\"];
 const _hoisted_3 = [\\"innerHTML\\"];
@@ -1219,15 +1048,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue\\"]]);",
+var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue\\"]]);",
         "originalLength": 6897,
         "removedExports": [],
         "renderedExports": [
           "default",
         ],
-        "renderedLength": 7383,
+        "renderedLength": 7408,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue?vue&type=style&index=0&lang.css": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-declarations/src/components/vue-notifications.vue?vue&type=style&index=0&lang.css": {
         "code": "var css = \\"\\\\n.vue-notification-group {\\\\n\\\\tdisplay: block;\\\\n\\\\tposition: fixed;\\\\n\\\\tz-index: 5000;\\\\n}\\\\n.vue-notification-wrapper {\\\\n\\\\tdisplay: block;\\\\n\\\\toverflow: hidden;\\\\n\\\\twidth: 100%;\\\\n\\\\tmargin: 0;\\\\n\\\\tpadding: 0;\\\\n}\\\\n.notification-title {\\\\n\\\\tfont-weight: 600;\\\\n}\\\\n.vue-notification-template {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\tbackground: white;\\\\n\\\\ttext-align: left;\\\\n}\\\\n.vue-notification {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\ttext-align: left;\\\\n\\\\tfont-size: 12px;\\\\n\\\\tpadding: 10px;\\\\n\\\\tmargin: 0 5px 5px;\\\\n\\\\n\\\\tcolor: white;\\\\n\\\\tbackground: #44a4fc;\\\\n\\\\tborder-left: 5px solid #187fe7;\\\\n}\\\\n.vue-notification.warn {\\\\n\\\\tbackground: #ffb648;\\\\n\\\\tborder-left-color: #f48a06;\\\\n}\\\\n.vue-notification.error {\\\\n\\\\tbackground: #e54d42;\\\\n\\\\tborder-left-color: #b82e24;\\\\n}\\\\n.vue-notification.success {\\\\n\\\\tbackground: #68cd86;\\\\n\\\\tborder-left-color: #42a85f;\\\\n}\\\\n.vn-fade-enter-active,\\\\n.vn-fade-leave-active,\\\\n.vn-fade-move {\\\\n\\\\ttransition: all 0.5s;\\\\n}\\\\n.vn-fade-enter-from,\\\\n.vn-fade-leave-to {\\\\n\\\\topacity: 0;\\\\n}\\\\n\\";
 n(css,{});",
         "originalLength": 938,
@@ -1491,7 +1320,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue\\"]]);
+var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue\\"]]);
 
 export { vueNotifications2 as default };
 ",
@@ -1499,7 +1328,7 @@ export { vueNotifications2 as default };
     "exports": [
       "default",
     ],
-    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue",
+    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue",
     "fileName": "vue-notifications-2.js",
     "implicitlyLoadedBefore": [],
     "importedBindings": {
@@ -1550,7 +1379,7 @@ export { vueNotifications2 as default };
     "isImplicitEntry": false,
     "map": null,
     "modules": {
-      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.70.2/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
+      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.72.1/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
         "code": "var e=[],t=[];function n(n,r){if(n&&\\"undefined\\"!=typeof document){var a,s=!0===r.prepend?\\"prepend\\":\\"append\\",d=!0===r.singleTag,i=\\"string\\"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName(\\"head\\")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement(\\"style\\");if(e.setAttribute(\\"type\\",\\"text/css\\"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a=\\"prepend\\"===s?\\"afterbegin\\":\\"beforeend\\";return i.insertAdjacentElement(a,e),e}}",
         "originalLength": 764,
         "removedExports": [],
@@ -1559,7 +1388,7 @@ export { vueNotifications2 as default };
         ],
         "renderedLength": 744,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue": {
         "code": "const _hoisted_1 = [\\"data-id\\"];
 const _hoisted_2 = [\\"onClick\\"];
 const _hoisted_3 = [\\"innerHTML\\"];
@@ -1766,15 +1595,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue\\"]]);",
+var vueNotifications2 = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue\\"]]);",
         "originalLength": 6897,
         "removedExports": [],
         "renderedExports": [
           "default",
         ],
-        "renderedLength": 7389,
+        "renderedLength": 7414,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue?vue&type=style&index=0&lang.css": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications-2.vue?vue&type=style&index=0&lang.css": {
         "code": "var css = \\"\\\\n.vue-notification-group {\\\\n\\\\tdisplay: block;\\\\n\\\\tposition: fixed;\\\\n\\\\tz-index: 5000;\\\\n}\\\\n.vue-notification-wrapper {\\\\n\\\\tdisplay: block;\\\\n\\\\toverflow: hidden;\\\\n\\\\twidth: 100%;\\\\n\\\\tmargin: 0;\\\\n\\\\tpadding: 0;\\\\n}\\\\n.notification-title {\\\\n\\\\tfont-weight: 600;\\\\n}\\\\n.vue-notification-template {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\tbackground: white;\\\\n\\\\ttext-align: left;\\\\n}\\\\n.vue-notification {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\ttext-align: left;\\\\n\\\\tfont-size: 12px;\\\\n\\\\tpadding: 10px;\\\\n\\\\tmargin: 0 5px 5px;\\\\n\\\\n\\\\tcolor: white;\\\\n\\\\tbackground: #44a4fc;\\\\n\\\\tborder-left: 5px solid #187fe7;\\\\n}\\\\n.vue-notification.warn {\\\\n\\\\tbackground: #ffb648;\\\\n\\\\tborder-left-color: #f48a06;\\\\n}\\\\n.vue-notification.error {\\\\n\\\\tbackground: #e54d42;\\\\n\\\\tborder-left-color: #b82e24;\\\\n}\\\\n.vue-notification.success {\\\\n\\\\tbackground: #68cd86;\\\\n\\\\tborder-left-color: #42a85f;\\\\n}\\\\n.vn-fade-enter-active,\\\\n.vn-fade-leave-active,\\\\n.vn-fade-move {\\\\n\\\\ttransition: all 0.5s;\\\\n}\\\\n.vn-fade-enter-from,\\\\n.vn-fade-leave-to {\\\\n\\\\topacity: 0;\\\\n}\\\\n\\";
 n(css,{});",
         "originalLength": 938,
@@ -2033,7 +1862,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue\\"]]);
+var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue\\"]]);
 
 export { vueNotifications as default };
 ",
@@ -2041,7 +1870,7 @@ export { vueNotifications as default };
     "exports": [
       "default",
     ],
-    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue",
+    "facadeModuleId": "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue",
     "fileName": "vue-notifications.js",
     "implicitlyLoadedBefore": [],
     "importedBindings": {
@@ -2092,7 +1921,7 @@ export { vueNotifications as default };
     "isImplicitEntry": false,
     "map": null,
     "modules": {
-      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.70.2/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
+      "/Users/leonzalion/projects/compile-vue-sfc/node_modules/.pnpm/rollup-plugin-styles@4.0.0_rollup@2.72.1/node_modules/rollup-plugin-styles/dist/runtime/inject-css.js": {
         "code": "var e=[],t=[];function n(n,r){if(n&&\\"undefined\\"!=typeof document){var a,s=!0===r.prepend?\\"prepend\\":\\"append\\",d=!0===r.singleTag,i=\\"string\\"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName(\\"head\\")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement(\\"style\\");if(e.setAttribute(\\"type\\",\\"text/css\\"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a=\\"prepend\\"===s?\\"afterbegin\\":\\"beforeend\\";return i.insertAdjacentElement(a,e),e}}",
         "originalLength": 764,
         "removedExports": [],
@@ -2101,7 +1930,7 @@ export { vueNotifications as default };
         ],
         "renderedLength": 744,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue": {
         "code": "const _hoisted_1 = [\\"data-id\\"];
 const _hoisted_2 = [\\"onClick\\"];
 const _hoisted_3 = [\\"innerHTML\\"];
@@ -2308,15 +2137,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue\\"]]);",
+var vueNotifications = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue\\"]]);",
         "originalLength": 6897,
         "removedExports": [],
         "renderedExports": [
           "default",
         ],
-        "renderedLength": 7386,
+        "renderedLength": 7411,
       },
-      "/Users/leonzalion/projects/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue?vue&type=style&index=0&lang.css": {
+      "/Users/leonzalion/projects/compile-vue-sfc/packages/compile-vue-sfc/test/temp/vue3-notify-no-declarations/src/components/vue-notifications.vue?vue&type=style&index=0&lang.css": {
         "code": "var css = \\"\\\\n.vue-notification-group {\\\\n\\\\tdisplay: block;\\\\n\\\\tposition: fixed;\\\\n\\\\tz-index: 5000;\\\\n}\\\\n.vue-notification-wrapper {\\\\n\\\\tdisplay: block;\\\\n\\\\toverflow: hidden;\\\\n\\\\twidth: 100%;\\\\n\\\\tmargin: 0;\\\\n\\\\tpadding: 0;\\\\n}\\\\n.notification-title {\\\\n\\\\tfont-weight: 600;\\\\n}\\\\n.vue-notification-template {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\tbackground: white;\\\\n\\\\ttext-align: left;\\\\n}\\\\n.vue-notification {\\\\n\\\\tdisplay: block;\\\\n\\\\tbox-sizing: border-box;\\\\n\\\\ttext-align: left;\\\\n\\\\tfont-size: 12px;\\\\n\\\\tpadding: 10px;\\\\n\\\\tmargin: 0 5px 5px;\\\\n\\\\n\\\\tcolor: white;\\\\n\\\\tbackground: #44a4fc;\\\\n\\\\tborder-left: 5px solid #187fe7;\\\\n}\\\\n.vue-notification.warn {\\\\n\\\\tbackground: #ffb648;\\\\n\\\\tborder-left-color: #f48a06;\\\\n}\\\\n.vue-notification.error {\\\\n\\\\tbackground: #e54d42;\\\\n\\\\tborder-left-color: #b82e24;\\\\n}\\\\n.vue-notification.success {\\\\n\\\\tbackground: #68cd86;\\\\n\\\\tborder-left-color: #42a85f;\\\\n}\\\\n.vn-fade-enter-active,\\\\n.vn-fade-leave-active,\\\\n.vn-fade-move {\\\\n\\\\ttransition: all 0.5s;\\\\n}\\\\n.vn-fade-enter-from,\\\\n.vn-fade-leave-to {\\\\n\\\\topacity: 0;\\\\n}\\\\n\\";
 n(css,{});",
         "originalLength": 938,

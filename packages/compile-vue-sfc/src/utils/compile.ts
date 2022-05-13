@@ -88,7 +88,7 @@ export async function compileVueSFC(
 
 				const vueSFCDtsPath = path.join(projectPath, `${relativePath}.d.ts`);
 				if (options.write) {
-					await fs.promises.writeFile(vueSFCDeclaration, vueSFCDtsPath);
+					await fs.promises.writeFile(vueSFCDtsPath, vueSFCDeclaration);
 				}
 			})
 		);
