@@ -8,8 +8,8 @@ export async function executeVueTsc(
 ): Promise<string> {
 	const vueTscWrapperPath = join(import.meta.url, '../vue-tsc/wrapper.js');
 	const { stdout: vueSFCDeclaration } = await execa(
-		vueTscWrapperPath,
-		args,
+		'node',
+		[vueTscWrapperPath, ...args],
 		execaOptions
 	);
 	return vueSFCDeclaration;
