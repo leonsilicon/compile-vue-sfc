@@ -34,6 +34,7 @@
 		"find-up": "^6.3.0",
 		"globby": "^13.1.1",
 		"is-path-inside": "^4.0.0",
+		"pkg-up": "^4.0.0",
 		"rollup": "^2.72.1",
 		"rollup-plugin-styles": "^4.0.0",
 		"signal-exit": "^3.0.7",

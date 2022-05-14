@@ -3,6 +3,7 @@ import { findUp } from 'find-up';
 import { globby } from 'globby';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { pkgUp } from 'pkg-up';
 import type { OutputChunk } from 'rollup';
 import { rollup } from 'rollup';
 import styles from 'rollup-plugin-styles';
@@ -18,6 +19,7 @@ type CompileVueSFCOptions = {
 	files: string | string[];
 	projectRootPath?: string;
 	write?: boolean;
+	outDir?: string;
 } & (
 	| {
 			declarations: true;
@@ -51,6 +53,14 @@ export async function compileVueSFC(
 		throw new Error('No files were provided.');
 	}
 
+	const projectPath: string | undefined =
+		options.projectRootPath ?? (await pkgUp());
+	if (projectPath === undefined) {
+		throw new Error(
+			'Could not find the root of the project (please set the option `projectRootPath` to the path of your project root).'
+		);
+	}
+
 	if (options.declarations) {
 		let tsconfigPath: string;
 		if (options.tsconfigPath === undefined) {
@@ -65,8 +75,6 @@ export async function compileVueSFC(
 		} else {
 			tsconfigPath = options.tsconfigPath;
 		}
-
-		const projectPath = path.dirname(tsconfigPath);
 
 		// Copying the declaration files to the original project
 		await Promise.all(
@@ -86,8 +94,14 @@ export async function compileVueSFC(
 					vueSFCFilePath
 				);
 
-				const vueSFCDtsPath = path.join(projectPath, `${relativePath}.d.ts`);
-				if (options.write) {
+				if (options.outDir !== undefined) {
+					const vueSFCDtsPath = path.join(
+						options.outDir,
+						`${relativePath}.d.ts`
+					);
+					await fs.promises.writeFile(vueSFCDtsPath, vueSFCDeclaration);
+				} else if (options.write) {
+					const vueSFCDtsPath = path.join(projectPath, `${relativePath}.d.ts`);
 					await fs.promises.writeFile(vueSFCDtsPath, vueSFCDeclaration);
 				}
 			})
@@ -119,14 +133,22 @@ export async function compileVueSFC(
 
 			const { code } = result.output[0];
 
-			if (options.write) {
-				await fs.promises.writeFile(
-					path.join(
-						path.dirname(vueSFCFile),
-						`${path.basename(vueSFCFile)}.js`
-					),
-					code
+			const relativePath = path.relative(projectPath, vueSFCFile);
+
+			if (options.outDir !== undefined) {
+				const compiledVueSFCPath = path.join(
+					options.outDir,
+					relativePath,
+					`${path.basename(vueSFCFile)}.js`
 				);
+				await fs.promises.writeFile(compiledVueSFCPath, code);
+			} else if (options.write) {
+				const compiledVueSFCPath = path.join(
+					projectPath,
+					relativePath,
+					`${path.basename(vueSFCFile)}.js`
+				);
+				await fs.promises.writeFile(compiledVueSFCPath, code);
 			}
 
 			return result.output[0];
