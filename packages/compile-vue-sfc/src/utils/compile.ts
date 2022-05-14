@@ -55,7 +55,7 @@ export async function compileVueSFC(
 
 	let projectPath: string;
 	if (options.projectRootPath === undefined) {
-		const pkgJsonPath = await pkgUp();
+		const pkgJsonPath = await pkgUp({ cwd: [options.files].flat()[0] });
 		if (pkgJsonPath === undefined) {
 			throw new Error(
 				'Could not find the root of the project (please set the option `projectRootPath` to the path of your project root).'
@@ -95,19 +95,32 @@ export async function compileVueSFC(
 					vueSFCFilePath,
 				]);
 
-				const relativePath = path.relative(
-					path.dirname(tsconfigPath),
-					vueSFCFilePath
+				const relativePathDir = path.dirname(
+					path.relative(path.dirname(tsconfigPath), vueSFCFilePath)
 				);
 
+				const vueSFCName = path.parse(vueSFCFilePath).name;
 				if (options.outDir !== undefined) {
 					const vueSFCDtsPath = path.join(
 						options.outDir,
-						`${relativePath}.d.ts`
+						relativePathDir,
+						`${vueSFCName}.d.ts`
 					);
+					if (!fs.existsSync(path.dirname(vueSFCDtsPath))) {
+						fs.mkdirSync(path.dirname(vueSFCDtsPath), { recursive: true });
+					}
+
 					await fs.promises.writeFile(vueSFCDtsPath, vueSFCDeclaration);
 				} else if (options.write) {
-					const vueSFCDtsPath = path.join(projectPath, `${relativePath}.d.ts`);
+					const vueSFCDtsPath = path.join(
+						projectPath,
+						relativePathDir,
+						`${vueSFCName}.d.ts`
+					);
+					if (!fs.existsSync(path.dirname(vueSFCDtsPath))) {
+						fs.mkdirSync(path.dirname(vueSFCDtsPath), { recursive: true });
+					}
+
 					await fs.promises.writeFile(vueSFCDtsPath, vueSFCDeclaration);
 				}
 			})
@@ -139,20 +152,28 @@ export async function compileVueSFC(
 
 			const { code } = result.output[0];
 
-			const relativePath = path.relative(projectPath, vueSFCFile);
+			const relativePathDir = path.dirname(
+				path.relative(projectPath, vueSFCFile)
+			);
+			const vueSFCName = path.parse(vueSFCFile).name;
 
 			if (options.outDir !== undefined) {
 				const compiledVueSFCPath = path.join(
 					options.outDir,
-					relativePath,
-					`${path.basename(vueSFCFile)}.js`
+					relativePathDir,
+					`${vueSFCName}.js`
 				);
+
+				if (!fs.existsSync(path.dirname(compiledVueSFCPath))) {
+					fs.mkdirSync(path.dirname(compiledVueSFCPath), { recursive: true });
+				}
+
 				await fs.promises.writeFile(compiledVueSFCPath, code);
 			} else if (options.write) {
 				const compiledVueSFCPath = path.join(
 					projectPath,
-					relativePath,
-					`${path.basename(vueSFCFile)}.js`
+					relativePathDir,
+					`${vueSFCName}.js`
 				);
 				await fs.promises.writeFile(compiledVueSFCPath, code);
 			}
