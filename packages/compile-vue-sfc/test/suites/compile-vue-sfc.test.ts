@@ -1,4 +1,5 @@
 import lionFixture from 'lion-fixture';
+import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, test } from 'vitest';
 
@@ -35,6 +36,7 @@ describe('works with vue3-notify/', () => {
 		});
 		expect(declarations).toMatchSnapshot();
 		expect(outputChunks.map((chunk) => chunk.code)).toMatchSnapshot();
+		expect(fs.existsSync(path.join(vue3NotifyTempDir, 'dist'))).toBe(true);
 	});
 
 	test('works without declarations', async () => {
@@ -55,7 +57,7 @@ describe('works with vue3-notify/', () => {
 	test('works without declarations and outDir', async () => {
 		const vue3NotifyTempDir = await fixture(
 			'vue3-notify',
-			'vue3-notify-no-declarations'
+			'vue3-notify-outdir-no-declarations'
 		);
 
 		const payload = await compileVueSFC({
@@ -65,5 +67,6 @@ describe('works with vue3-notify/', () => {
 		});
 		expect((payload as any).declarations).toBe(undefined);
 		expect(payload.outputChunks.map((chunk) => chunk.code)).toMatchSnapshot();
+		expect(fs.existsSync(path.join(vue3NotifyTempDir, 'dist'))).toBe(true);
 	});
 });
