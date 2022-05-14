@@ -4,7 +4,7 @@
 		"prepare": "lion-git-hooks"
 	},
 	"devDependencies": {
-		"@leonzalion/configs": "^1.4.15",
+		"@leonzalion/configs": "^1.4.18",
 		"typescript": "^4.6.4"
 	}
 }

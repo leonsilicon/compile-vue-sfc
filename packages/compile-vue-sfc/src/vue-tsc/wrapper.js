@@ -47,7 +47,6 @@ fs.readFileSync = (...args) => {
 		try {
 			const tsconfig = parseTsconfig(tsconfigString);
 
-
 			tsconfig.compilerOptions ??= {};
 			tsconfig.compilerOptions.outDir = 'dist'
 			tsconfig.compilerOptions.skipLibCheck = true;
