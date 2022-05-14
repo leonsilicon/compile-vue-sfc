@@ -4,10 +4,10 @@ importers:
 
   .:
     specifiers:
-      '@leonzalion/configs': ^1.4.20
+      '@leonzalion/configs': ^1.4.21
       typescript: ^4.6.4
     devDependencies:
-      '@leonzalion/configs': 1.4.20_typescript@4.6.4
+      '@leonzalion/configs': 1.4.21_typescript@4.6.4
       typescript: 4.6.4
 
   packages/compile-vue-sfc:
@@ -304,8 +304,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@leonzalion/configs/1.4.20_typescript@4.6.4:
-    resolution: {integrity: sha512-fuIZrmQoKoigwG1Gtez3jgTHv8DcC1Ra9dC8TAMNRMiv9ZwFKzws8aKP9Bl0YWMzbJrQNV4/MEXTgyzE3Y6LNA==}
+  /@leonzalion/configs/1.4.21_typescript@4.6.4:
+    resolution: {integrity: sha512-BHnoUxLhA48ORd/wnK8IWG0C57RW1jwwpXTZmitp3P0KOo4ZCynmTrEhZlZW6rF9geSM77EXiXXnNEmVHyCkjA==}
     hasBin: true
     dependencies:
       '@commitlint/cli': 16.3.0_@swc+core@1.2.183
