@@ -96,7 +96,7 @@ export async function compileVueSFC(
 				]);
 
 				const relativePathDir = path.dirname(
-					path.relative(path.dirname(tsconfigPath), vueSFCFilePath)
+					path.relative(projectPath, vueSFCFilePath)
 				);
 
 				const vueSFCName = path.parse(vueSFCFilePath).name;
