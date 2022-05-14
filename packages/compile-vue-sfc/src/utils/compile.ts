@@ -53,12 +53,18 @@ export async function compileVueSFC(
 		throw new Error('No files were provided.');
 	}
 
-	const projectPath: string | undefined =
-		options.projectRootPath ?? (await pkgUp());
-	if (projectPath === undefined) {
-		throw new Error(
-			'Could not find the root of the project (please set the option `projectRootPath` to the path of your project root).'
-		);
+	let projectPath: string;
+	if (options.projectRootPath === undefined) {
+		const pkgJsonPath = await pkgUp();
+		if (pkgJsonPath === undefined) {
+			throw new Error(
+				'Could not find the root of the project (please set the option `projectRootPath` to the path of your project root).'
+			);
+		}
+
+		projectPath = path.dirname(pkgJsonPath);
+	} else {
+		projectPath = options.projectRootPath;
 	}
 
 	if (options.declarations) {
