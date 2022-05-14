@@ -162,7 +162,7 @@ export async function compileVueSFC(
 				const compiledVueSFCPath = path.join(
 					options.outDir,
 					relativePathDir,
-					`${vueSFCName}.js`
+					`${vueSFCName}.vue.js`
 				);
 
 				if (!fs.existsSync(path.dirname(compiledVueSFCPath))) {
@@ -174,7 +174,7 @@ export async function compileVueSFC(
 				const compiledVueSFCPath = path.join(
 					projectPath,
 					relativePathDir,
-					`${vueSFCName}.js`
+					`${vueSFCName}.vue.js`
 				);
 				await fs.promises.writeFile(compiledVueSFCPath, code);
 			}
