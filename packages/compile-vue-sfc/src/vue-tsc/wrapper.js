@@ -48,7 +48,7 @@ fs.readFileSync = (...args) => {
 			const tsconfig = parseTsconfig(tsconfigString);
 
 			tsconfig.compilerOptions ??= {};
-			tsconfig.compilerOptions.outDir = 'dist'
+			tsconfig.compilerOptions.outDir = 'dist';
 			tsconfig.compilerOptions.skipLibCheck = true;
 			tsconfig.compilerOptions.noEmitOnError = false;
 			tsconfig.files = [vueSFCFilePath];
@@ -85,9 +85,11 @@ fs.writeSync = (...args) => {
 	}
 };
 
-// Prevent TypeScript from exiting the process early
-process.exit = () => {
-	/* noop */
+let exitCode;
+const exit = process.exit;
+process.exit = (code) => {
+	exitCode = code;
+	// Deliberately don't exit tho program to prevent TypeScript from exiting the process early
 };
 
 await import('vue-tsc/bin/vue-tsc.js');
@@ -97,3 +99,4 @@ if (declaration === undefined) {
 }
 
 process.stdout.write(declaration);
+exit(exitCode);
