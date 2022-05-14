@@ -2,6 +2,6 @@
 	"name": "@compile-vue-sfc/scripts",
 	"type": "module",
 	"dependencies": {
-		"lion-system": "^1.3.27"
+		"lion-system": "^1.3.29"
 	}
 }
