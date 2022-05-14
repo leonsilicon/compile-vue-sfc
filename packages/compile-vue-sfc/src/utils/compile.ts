@@ -6,6 +6,7 @@ import * as path from 'node:path';
 import { pkgUp } from 'pkg-up';
 import type { OutputChunk } from 'rollup';
 import { rollup } from 'rollup';
+import jsImports from 'rollup-plugin-js-imports';
 import styles from 'rollup-plugin-styles';
 
 import { executeVueTsc } from '~/utils/vue-tsc.js';
@@ -131,7 +132,7 @@ export async function compileVueSFC(
 	const outputChunks = await Promise.all(
 		vueSFCFiles.map(async (vueSFCFile) => {
 			const bundle = await rollup({
-				plugins: [vue({ reactivityTransform: true }), styles()],
+				plugins: [vue({ reactivityTransform: true }), styles(), jsImports()],
 				external(id: string) {
 					// TODO: find a better way to distinguish between a project's import and a rollup plugin's import
 					if (

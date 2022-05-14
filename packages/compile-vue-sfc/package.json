@@ -36,6 +36,7 @@
 		"is-path-inside": "^4.0.0",
 		"pkg-up": "^4.0.0",
 		"rollup": "^2.72.1",
+		"rollup-plugin-js-imports": "^1.2.0",
 		"rollup-plugin-styles": "^4.0.0",
 		"signal-exit": "^3.0.7",
 		"tmp-promise": "^3.0.3",
