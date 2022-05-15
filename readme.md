@@ -1,5 +1,7 @@
 # compile-vue-sfc
 
+[![npm version](https://img.shields.io/npm/v/compile-vue-sfc)](https://npmjs.com/package/compile-vue-sfc)
+
 A utility function for compiling a Vue SFC into a JavaScript file and an optional TypeScript declarations file.
 
 ## Installation
