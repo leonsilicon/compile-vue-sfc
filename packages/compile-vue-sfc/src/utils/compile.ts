@@ -19,6 +19,10 @@ type CompileVueSFCPayload = {
 type CompileVueSFCOptions = {
 	files: string | string[];
 	projectRootPath?: string;
+	/**
+		If true, the compiled Vue components will have the extension `.vue.js` and the declaration files will have the extension `.vue.d.ts`.
+	 */
+	vueExtension?: boolean;
 	write?: boolean;
 	outDir?: string;
 } & (
@@ -45,6 +49,11 @@ export async function compileVueSFC(
 export async function compileVueSFC(
 	options: CompileVueSFCOptions
 ): Promise<CompileVueSFCPayload> {
+	options = {
+		vueExtension: true,
+		...options,
+	};
+
 	const payload: CompileVueSFCPayload = {
 		outputChunks: [],
 	};
@@ -101,11 +110,14 @@ export async function compileVueSFC(
 				);
 
 				const vueSFCName = path.parse(vueSFCFilePath).name;
+				const vueSFCDtsFileName = options.vueExtension
+					? `${vueSFCName}.vue.d.ts`
+					: `${vueSFCName}.d.ts`;
 				if (options.outDir !== undefined) {
 					const vueSFCDtsPath = path.join(
 						options.outDir,
 						relativePathDir,
-						`${vueSFCName}.d.ts`
+						vueSFCDtsFileName
 					);
 					if (!fs.existsSync(path.dirname(vueSFCDtsPath))) {
 						fs.mkdirSync(path.dirname(vueSFCDtsPath), { recursive: true });
@@ -116,7 +128,7 @@ export async function compileVueSFC(
 					const vueSFCDtsPath = path.join(
 						projectPath,
 						relativePathDir,
-						`${vueSFCName}.d.ts`
+						vueSFCDtsFileName
 					);
 					if (!fs.existsSync(path.dirname(vueSFCDtsPath))) {
 						fs.mkdirSync(path.dirname(vueSFCDtsPath), { recursive: true });
@@ -158,11 +170,15 @@ export async function compileVueSFC(
 			);
 			const vueSFCName = path.parse(vueSFCFile).name;
 
+			const compiledVueSFCFileName = options.vueExtension
+				? `${vueSFCName}.vue.js`
+				: `${vueSFCName}.js`;
+
 			if (options.outDir !== undefined) {
 				const compiledVueSFCPath = path.join(
 					options.outDir,
 					relativePathDir,
-					`${vueSFCName}.vue.js`
+					compiledVueSFCFileName
 				);
 
 				if (!fs.existsSync(path.dirname(compiledVueSFCPath))) {
@@ -174,7 +190,7 @@ export async function compileVueSFC(
 				const compiledVueSFCPath = path.join(
 					projectPath,
 					relativePathDir,
-					`${vueSFCName}.vue.js`
+					compiledVueSFCFileName
 				);
 				await fs.promises.writeFile(compiledVueSFCPath, code);
 			}
