@@ -10,6 +10,35 @@ A utility function for compiling a Vue SFC into a JavaScript file and an optiona
 npm install compile-vue-sfc
 ```
 
+## Usage
+
+### CLI
+
+```shell
+compile-vue-sfc ./src/components/*.vue
+```
+
+With TypeScript declarations:
+
+```shell
+compile-vue-sfc --declarations ./src/components/*.vue
+```
+
+### Programmatic Usage
+
+Import `compileVueSFC` into your project and call it:
+
+```typescript
+import { compileVueSFC } from 'compile-vue-sfc';
+
+await compileVueSFC({
+  declarations: true,
+  outDir: 'dist',
+  files: globbySync(['./src/spinners/*.vue']),
+  projectRootPath: join(import.meta.url, '../src'),
+});
+```
+
 ## How it Works
 
 ### TypeScript Definitions
