@@ -125,10 +125,4 @@ dist-ssr
 .eslintcache
 tsconfig.tsbuildinfo
 
-# dist .gitkeep
-
-!**/dist
-**/dist/*
-!**/dist/.gitkeep
-
 temp

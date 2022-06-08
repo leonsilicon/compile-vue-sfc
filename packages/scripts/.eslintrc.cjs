@@ -1,4 +1,3 @@
-const createESLintConfig = require('@leonzalion/configs/eslint.cjs');
+const createESLintConfig = require('lionconfig/eslint');
 
 module.exports = createESLintConfig(__dirname);
-

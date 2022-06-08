@@ -1,5 +1,4 @@
 {
 	"name": "@compile-vue-sfc/scripts",
-	"type": "module",
-	"dependencies": {}
+	"type": "module"
 }
