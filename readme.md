@@ -43,8 +43,8 @@ await compileVueSFC({
 
 ### TypeScript Definitions
 
-TypeScript definitions are generated with `vue-tsc`. However, TypeScript unfortunately doesn't support specifying individual files for compilation in combination with a `tsconfig.json` file. Thus, in order to work around this limitation, a temporary `tsconfig.json` file needs to be created specifying the `.vue` file explicitly within an extra `includes` property. But, creating a temporary `tsconfig.json` on disk is slow and error-prone, so instead, we call a wrapper script which overrides `fs.readFileSync` to provide a "virtual" `tsconfig.json` file with the appropriate before it invokes `vue-tsc`.
+TypeScript definitions are generated with `vue-tsc`. However, TypeScript unfortunately doesn't support specifying individual files for compilation in combination with a `tsconfig.json` file. Thus, in order to work around this limitation, a temporary `tsconfig.json` file needs to be created specifying the `.vue` file explicitly within an extra `includes` property. But, creating a temporary `tsconfig.json` on disk is slow and error-prone, so instead, we call a wrapper script which overrides `fs.readFileSync` to provide a "virtual" `tsconfig.json` file with the appropriate options before it invokes `vue-tsc`.
 
-Unfortunately, for an unknown reason, whenever multiple `.vue` files are specified, `vue-tsc` encounters an infinite loop and never exits. Thus, each Vue SFC needs to be compiled separately (if there is a solution to this, please let me know!)
+Unfortunately, for unknown reasons, whenever multiple `.vue` files are specified, `vue-tsc` encounters an infinite loop and never exits. Thus, each Vue SFC needs to be compiled separately (if there is a solution to this, please let me know!)
 
-In addition, since TypeScript doesn't provide a way to export declarations via standard out, we also have to monkey-patch `fs.writeSync` to save the declaration output to a temporary variable before outputting it from our wrapper script.
+In addition, since TypeScript doesn't provide a way to export declarations via standard output, we also have to monkeypatch `fs.writeSync` to save the declaration output to a temporary variable before outputting it from our wrapper script.
